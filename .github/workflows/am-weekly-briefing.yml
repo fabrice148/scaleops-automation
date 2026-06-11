@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run AM Weekly Briefing
-        env:
+env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: python3 am_weekly_briefing.py
