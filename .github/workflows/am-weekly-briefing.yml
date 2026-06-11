@@ -1,0 +1,20 @@
+name: AM Weekly Briefing — ScaleOps
+
+on:
+  schedule:
+    - cron: "0 9 * * 0"  # Every Sunday at 9:00 UTC
+  workflow_dispatch:       # Allow manual trigger from GitHub UI
+
+jobs:
+  briefing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run AM Weekly Briefing
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python3 am_weekly_briefing.py
